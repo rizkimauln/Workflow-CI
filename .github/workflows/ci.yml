@@ -57,7 +57,7 @@ jobs:
           cd MLProject
           mlflow models build-docker \
             -m "runs:/${{ steps.get_run.outputs.run_id }}/model" \
-            -n "diabetes-model"
+            -n "diabetes-model" \
             --env-manager=local
 
       - name: Log in to Docker Hub
