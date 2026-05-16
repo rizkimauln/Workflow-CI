@@ -38,7 +38,8 @@ jobs:
         id: get_run
         run: |
           cd MLProject
-          RUN_ID=$(ls -t mlruns/0/ | head -n 1)
+          # Mencari spesifik folder yang namanya terdiri dari 32 karakter (format asli Run ID)
+          RUN_ID=$(ls -t mlruns/0/ | grep -E '^[a-f0-9]{32}$' | head -n 1)
           echo "run_id=$RUN_ID" >> $GITHUB_OUTPUT
           echo "Latest run: $RUN_ID"
 
